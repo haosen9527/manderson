@@ -42,11 +42,9 @@ manderson.use(function(req,res,next){
   }
 })
 //module classesify
-manderson.use('manderson-admin',require('./routers/haosen'));
-manderson.use('/api',require('./routers/api'));
-manderson.use('/',require('./routers/main'));
+manderson.use('/manderson-admin',require('./routers/haosen'));
 //connect
-mongoose.connect('mongodb：//localhost：27017/haosen',function(err){
+mongoose.connect('mongodb://localhost:27017/haosen',function(err){
   if(err)
   {
     console.log("mongodb failed");
