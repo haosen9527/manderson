@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/haosen9527/manderson#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "cookies": "^0.7.3",
+    "express": "^4.16.4",
+    "jquery": "^3.4.1"
   },
   "devDependencies": {}
 }

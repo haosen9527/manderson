@@ -12,6 +12,7 @@ var Cookies=require('cookies');
 
 //创建app应用 =>NodeJs Http.creatServer()
 var manderson=express();
+manderson.use('/public',express.static(__dirname+'/public'));
 var User = require('./mongoDB/users');
 
 manderson.engine('html',swig.renderFile);
@@ -24,6 +25,7 @@ manderson.use(bodyParser.urlencoded({extended:true}));
 //setting Cookies
 //module classesify
 manderson.use('/',require('./routers/haosen'));
+manderson.use('/login',require('./routers/haosen'));
 //connect
 mongoose.connect('mongodb://localhost:27017/haosen',function(err){
   if(err)
