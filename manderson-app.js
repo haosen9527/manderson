@@ -21,7 +21,8 @@ manderson.set('view engine','html');
 
 swig.setDefaults({cache:false});
 //bodyParser setting
-manderson.use(bodyParser.urlencoded({extended:true}));
+// manderson.use(bodyParser.urlencoded({extended:true}));
+manderson.use(bodyParser());
 //setting Cookies
 //module classesify
 manderson.use('/',require('./routers/haosen'));
