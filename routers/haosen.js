@@ -33,7 +33,7 @@ router.get('/login',function(req,res,next){
 router.get('/register',function(req,res,next){
   res.render('page/register');
 });
-router.get('/blogPage',function(req,res,next){
+router.get('/blog',function(req,res,next){
   res.render('page/blog');
 });
 router.get('/404',function(req,res,next){
@@ -41,7 +41,7 @@ router.get('/404',function(req,res,next){
 });
 
 router.post('/login', function(req, res){
-    console.log('checkbox :',req.body.checkbox==1);
+    //console.log('checkbox :',req.body.checkbox==1);
     var username = req.body.email;
     var password =  req.body.password;
     if(req.body.email == '' || req.body.password == '')
@@ -51,22 +51,22 @@ router.post('/login', function(req, res){
       res.json(responseData);
       return;
     }
-    console.log('login test : ',User.findOne({username:username}));
+    //console.log('login test : ',User.findOne({username:username}));
     User.findOne({
       username:username,
       password:password
     }).then(function(userInfo){
-      console.log('userInfo : ',userInfo);
+      //console.log('userInfo : ',userInfo);
       if(!userInfo){
         responseData.code = 2;
         responseData.message = 'username or password error!';
         // res.json(responseData);
-        res.redirect(404,'/404');
+        res.redirect('/404');
         return;
       }
       responseData.message = 'online';
       //跳转
-      res.redirect(303,'/blogPage');
+      res.redirect(303,'/blog');
       responseData.userInfo ={
         _id:userInfo._id,
         username:userInfo.username
@@ -84,7 +84,7 @@ router.post('/login', function(req, res){
 });
 //register
 router.post('/register',function(req,res,next){
-    console.log(req.body);
+    //console.log(req.body);
     var username=req.body.email;
     var password=req.body.password;
     var repassword=req.body.repassword;
@@ -118,13 +118,13 @@ router.post('/register',function(req,res,next){
         return;
     }
 
-    console.log('log : ',User.findOne({username:username}));
+  //  console.log('log : ',User.findOne({username:username}));
 
     //用户名是否注册
     User.findOne({
         username:username
     }).then(function(userInfo){
-        console.log("find"+userInfo);
+        //console.log("find"+userInfo);
         if(userInfo){
             responseData.code = 4;
             responseData.message="用户已注册";
@@ -147,7 +147,7 @@ router.post('/register',function(req,res,next){
           }
         });
     }).then(function(newUserInfo){
-        console.log(newUserInfo);
+        //console.log(newUserInfo);
         responseData.message="注册成功";
         res.json(responseData);
     });
