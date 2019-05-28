@@ -20,10 +20,15 @@ router.use(function(req,res,next){
 /*
 * 处理全局数据
 * */
-//home
+//index
 router.get('/',function(req,res,next){
         //console.log(req);
         res.render('page/manderson-index');
+});
+//Home
+router.get('/home',function(req,res,next){
+        //console.log(req);
+        res.render('page/manderson-home',{pagename:'manderson科技有限公司'});
 });
 //Login
 router.get('/login',function(req,res,next){
@@ -37,7 +42,7 @@ router.get('/blog',function(req,res,next){
   res.render('page/blog');
 });
 router.get('/404',function(req,res,next){
-  res.render('page/admin-404');
+  res.render('page/admin-404',{error:'404'});
 });
 
 router.post('/login', function(req, res){
@@ -61,7 +66,8 @@ router.post('/login', function(req, res){
         responseData.code = 2;
         responseData.message = 'username or password error!';
         // res.json(responseData);
-        res.redirect('/404');
+        //res.send(responseData);
+        res.render('page/login',{errorMsg:'username or password error!'});
         return;
       }
       responseData.message = 'online';
@@ -91,30 +97,34 @@ router.post('/register',function(req,res,next){
     var sex=req.body.sex;
     //用户名是否为空
     if(username==''){
-        responseData.code=1;
-        responseData.message="用户名为空";
-        res.json(responseData);
+        // responseData.code=1;
+        // responseData.message="用户名为空";
+        // res.json(responseData);
+        res.render('page/register',{errorMsg:'用户名为空 ！'});
         return;
     }
     //密码是否为空
     if(password==''){
-        responseData.code=2;
-        responseData.message="密码为空";
-        res.json(responseData);
+        // responseData.code=2;
+        // responseData.message="密码为空";
+        // res.json(responseData);
+        res.render('page/register',{errorMsg:'密码为空!'});
         return;
     }
     //密码是否为空
     if(repassword==''){
-        responseData.code=2;
-        responseData.message="密码为空2";
-        res.json(responseData);
+        // responseData.code=2;
+        // responseData.message="密码为空2";
+        // res.json(responseData);
+        res.render('page/register',{errorMsg:'请确认密码!'});
         return;
     }
     //密码是否一致
     if(repassword!=password){
-        responseData.code=3;
-        responseData.message="密码输入不一致";
-        res.json(responseData);
+        // responseData.code=3;
+        // responseData.message="密码输入不一致";
+        // res.json(responseData);
+        res.render('page/register',{errorMsg:'密码输入不一致!'});
         return;
     }
 
@@ -126,9 +136,10 @@ router.post('/register',function(req,res,next){
     }).then(function(userInfo){
         //console.log("find"+userInfo);
         if(userInfo){
-            responseData.code = 4;
-            responseData.message="用户已注册";
-            res.json(responseData);
+            // responseData.code = 4;
+            // responseData.message="用户已注册";
+            // res.json(responseData);
+            res.render('page/register',{usererror:'用户已注册'});
             return;
         }
         //保存用户注册信息
@@ -147,7 +158,7 @@ router.post('/register',function(req,res,next){
           }
         });
     }).then(function(newUserInfo){
-        //console.log(newUserInfo);
+        console.log(newUserInfo);
         responseData.message="注册成功";
         res.json(responseData);
     });

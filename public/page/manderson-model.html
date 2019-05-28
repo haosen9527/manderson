@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>{% block title %}{% endblock  %}</title>
+  {% block head %}{% endblock  %}
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link rel="alternate icon" type="image/png" href="public/img/manderson64.png">
+  <link rel="stylesheet" href="public/page/assets/css/amazeui.min.css"/>
+  <style>
+    .header {
+      text-align: center;
+      height:20%;
+    }
+    .header h1 {
+      font-size: 170%;
+      color: #333;
+      margin-top: 30px;
+    }
+    .header p {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="am-g">
+      <img src ="public/img/manderson64.png" style="margin-top:60px;"/>
+      <h1>Manderson Club</h1>
+      <p>Integrated Development Environment<br/></p>
+    </div>
+    <hr style="background-color:#d81e06; height:5px; border:none;"/>
+  </div>
+  {% block content %}{% endblock  %}
+</body>
+</html>

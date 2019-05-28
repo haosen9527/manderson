@@ -9,6 +9,7 @@ var mongoose =require('mongoose');
 //加载body-parser,用来处理post提交过来的数据
 var bodyParser=require('body-parser');
 var Cookies=require('cookies');
+const port = 8080;
 
 //创建app应用 =>NodeJs Http.creatServer()
 var manderson=express();
@@ -35,8 +36,8 @@ mongoose.connect('mongodb://localhost:27017/haosen',function(err){
   }
   else {
     console.log("mongodb connected");
-    manderson.listen(8080, (req, res) => {
-      console.log("listening...");
+    manderson.listen(port, (req, res) => {
+      console.log("listening : "+"http://localhost:"+port);
     });
   }
 });

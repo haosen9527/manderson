@@ -44,13 +44,14 @@
     </div>
     <br>
     <br>
-
     <form method="POST" class="am-form" role="form" >
       <label for="email">Username or Email address:</label>
       <input type="email" name="email" id="email" value="" placeholder="input Email address" >
       <br>
       <label for="password">Password :</label>
       <input type="password" name="password" id="password" value="" >
+      <br>
+      <span style="font:12px;color:#d81e06;">{{ errorMsg }}</span>
       <br>
       <label for="remember-me">
         <input id="remember-me" type="checkbox" name="checkbox">

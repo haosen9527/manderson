@@ -47,6 +47,7 @@
     <form method="POST" class="am-form" role="form" >
       <label for="email">Username or Email address:</label>
       <input type="email" name="email" id="email" value="" placeholder="input Email address" >
+      <span style="font:12px;color:#d81e06;">{{ usererror }}</span>
       <br>
       <label for="password">New Password :</label>
       <input type="password" name="password" id="password" value="" >
@@ -57,6 +58,8 @@
       <label for="text">choose SEX :</label>
       <input type="text" name="sex" id="" value="" style="weight:100px;">
       <br />
+      <span style="font:12px;color:#d81e06;">{{ errorMsg }}</span>
+      <br>
       <div class="am-cf">
         <input type="submit" name="" value="Register" class="am-btn am-btn-primary am-btn-sm am-fl">
         <input type="submit" name="" value="Register Admin" class="am-btn am-btn-default am-btn-sm am-fr">
